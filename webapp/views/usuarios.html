@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialBook</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css"/>
+</head>
+<body>
+
+    {{ template "cabecalho" }}
+
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"> Usuários Encontrados </h5>
+                        {{ range .}}
+                            <p class="card-text">
+                            {{ .Nome }} - <a href="/usuarios/{{ .ID }}"> {{ .Nick }} </a> - Membro Desde: {{ .Criacao.Format "02/01/2006" }}
+                            </p>
+                        {{ else }}
+                            <p class="card-text">
+                                Nenhum usuário encontrado.
+                            </p>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ template "rodape" }}
+    {{ template "scripts" }}
+
+      <script src="/assets/js/publicacoes.js"></script>
+</body>
+</html>
